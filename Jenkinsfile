@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Init') {
+            steps {
+                echo 'Initializing...'
+            }
+        }
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/devSagar95/flask-jenkins-demo.git', branch: 'main'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'echo Building...'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'pytest'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo Deploying...'
+            }
+        }
+    }
+}
